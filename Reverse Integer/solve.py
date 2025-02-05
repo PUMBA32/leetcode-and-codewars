@@ -7,7 +7,6 @@ Assume the environment does not allow you to store 64-bit integers (signed or un
 '''
 
 def reverse_integer(x: int) -> int:
-    if not -2_147_483_648 <= x <=  2_147_483_647: return 0
     if x == 0: return 0
 
     temp = "-" if x < 0 else "" 
@@ -20,7 +19,9 @@ def reverse_integer(x: int) -> int:
         start_zero = False
         result += s
     
-    return int(temp+result)
+    res: int = int(temp+result)
+    
+    return res if -2**31 <= res <= 2**31-1 else 0 
 
             
 
@@ -30,3 +31,4 @@ print(reverse_integer(120))  # 21
 print(reverse_integer(0))  # -
 print(reverse_integer(1))  # 1
 print(reverse_integer(1534236469))  # 0
+print(2**31-1)
