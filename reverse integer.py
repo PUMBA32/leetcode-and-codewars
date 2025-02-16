@@ -23,12 +23,21 @@ def reverse_integer(x: int) -> int:
     
     return res if -2**31 <= res <= 2**31-1 else 0 
 
+
+def reverse_integer_2(x: int) -> int:
+    res: int = 0
+
+    while x != 0:
+        res = res * 10 + x % 10
+        x /= 10
+
+    return res if -2**31 < res < 2**31-1 else 0 
+
             
 
-print(reverse_integer(123))  # 321
-print(reverse_integer(-123))  # -321
-print(reverse_integer(120))  # 21
-print(reverse_integer(0))  # -
-print(reverse_integer(1))  # 1
-print(reverse_integer(1534236469))  # 0
-print(2**31-1)
+print(reverse_integer_2(123))  # 321
+print(reverse_integer_2(-123))  # -321
+print(reverse_integer_2(120))  # 21
+print(reverse_integer_2(0))  # -
+print(reverse_integer_2(1))  # 1
+print(reverse_integer_2(1534236469))  # 0
